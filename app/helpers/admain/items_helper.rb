@@ -1,0 +1,2 @@
+module Admain::ItemsHelper
+end
