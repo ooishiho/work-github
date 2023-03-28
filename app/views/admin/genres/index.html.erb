@@ -1,7 +1,24 @@
 <h1>ジャンル一覧・追加</h1>
-<!--ジャンルを追加できる部分-->
-<p>ジャンル名</p>
-<!--新規登録ボタン-->
 
-<!--ジャンルテーブル・編集するボタンを横に配置-->
+<p>ジャンル名</p>
+<%= form_with model: Genre.new , url: genres_path, method: :post do |f| %>
+   <div class="form-group">
+    <%= f.label :name, 'ジャンル名' %>
+    <%= f.text_field :name, class: 'form-control' %>
+   </div>
+<% end %>
 <p>ジャンル</p>
+<table class="table ">
+<thead>
+<tr>
+<th>ジャンル</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</tbody>
+</table>

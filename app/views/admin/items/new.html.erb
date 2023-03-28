@@ -1,13 +1,36 @@
 <h1>商品新規登録</h1>
 <!--中央揃え-->
+<%= form_with model: Item.new , url: admin_items_path, method: :post do |f| %>
 <p>商品画像</p>
 <!--選択されているかを右に表示する-->
-<p>商品名</p>
-<p>商品説明</p>
+<div class="form-group">
+  <%= f.label :name, '商品名' %>
+  <%= f.text_field :name, class: 'form-gontrol' %>
+</div>
+<div class="form-group">
+  <%= f.label :introduction, '商品説明' %>
+  <%= f.text_field :introduction, class: 'form-gontrol' %>
+</div>
 <p>ジャンル</p>
-<!--クリックで▼から選択できるようにする-->
-<p>税抜価格</p>
+<select>
+  <option>--選択してください--</option>
+  <option>ケーキ</option>
+  <option>プリン</option>
+  <option>焼き菓子</option>
+  <option>キャンディー</option>
+</select>
+<div class="form-group">
+  <%= f.label :price, '税抜価格' %>
+  <%= f.number_field :price, class:'form-control' %>
+</div>
 <p>販売ステータス</p>
-<!--クリックで○選択できるようにする-->
-<p>販売ステータス</p>
-<!--新規登録ボタンの作成＊緑-->
+<label>
+  <input type="radio" name="destroy" value="sale">販売中
+</label>
+<label>
+  <input type= "radio" name ="destroy" value ="discontinued" >販売停止中
+</label>
+<div class="form-group">
+  <%= f.submit '新規登録' , class: 'btn btn-success' %>
+</div>
+<% end %>
