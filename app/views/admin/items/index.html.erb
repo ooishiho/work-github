@@ -1,11 +1,26 @@
 <h1>商品一覧</h1>
 <!--+ボタンで商品の新規登録-->
-<!--b.sでテーブル表示する-->
-<p>商品ID</p>
-<p>商品名</p>
-<p>税抜価格</p>
-<p>ジャンル</p>
-<p>ステータス</p>
-
+<table>
+ <thead>
+    <tr>
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税抜価格</th>
+    <th>ジャンル</th>
+    <th>ステータス</th>
+    </tr>
+ </thead>
+ <tbody>
+<%= @items.each do |item| %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.price %></td>
+    <td><%= genre.name %></td>
+    <td></td>
+  </tr>
+<% end %>
+ </tbody>
+</table>
 
 <!--ページネーションを追加-->
