@@ -4,6 +4,9 @@ devise_for :customers,skip: [:passwords],controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+root to: "homes#top"
+
 # 管理者用
 devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
@@ -25,6 +28,5 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
     resources :items, only:[:new,:index,:create,:show,:edit,:update]
   end
 
-root to: "homes#top"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

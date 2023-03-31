@@ -11,6 +11,88 @@
   </head>
 
   <body>
+  <header>
+   <nav class="navbar">
+   <div class="container">
+   <ul class="navbar-nav">
+   <li>
+   <% if user_signed_in? %>
+   <li>
+   <%= link_to public_customer_path, class:'nav-link text-light' do %>
+   マイページ
+   <% end %>
+   </li>
+   <li>
+   <%= link_to public_items_path, class:'nav-link text-light' do %>
+   商品一覧
+   <% end %>
+   </li>
+   <li>
+   <%= link_to public_cart_items_path, class:'nav-link text-light' do %>
+   カート
+   <% end %>
+   </li>
+   <li>
+   <%= link_to destroy_user_session_path, method: :delete,class:'nav-link text-light' do %>
+   ログアウト
+   <% end %>
+   </li>
+   <% else %>
+   <li>
+   <%= link_to about_path, class:'nav-link text-light' do %>
+   About
+   <% end %>
+   </li>
+   <li>
+   <%= link_to public_items_path, class:'nav-link text-light' do %>
+   商品一覧
+   <% end %>
+   </li>
+   <li>
+   <%= link_to new_user_registration_path, class:'nav-link text-light' do %>
+   新規登録
+   <% end %>
+   <li>
+   <%= link_to new_user_session_path, class:'nav-link text-light' do %>
+   ログイン
+   <% end %>
+   </li>
+   </li>
+   </li>
+   </ul>
+   </div>
+   <% if admin_user_signed_in? %>
+   <div>
+   <ul>
+   <li>
+   <%= link_to admin_items_path, class:'nav-link text-light' do %>
+   商品一覧
+   <% end %>
+   </li>
+   <li>
+   <%= link_to admin_customers_path, class:'nav-link text-light' do %>
+   会員一覧
+   <% end %>
+   </li>
+   <li>
+   <%= link_to admin_path, class:'nav-link text-light' do %>
+   注文履歴一覧
+   <% end %>
+   </li>
+   <li>
+   <%= link_to admin_genres_path, class:'nav-link text-light' do %>
+   ジャンル一覧
+   <% end %>
+   </li>
+   <li>
+   <%= link_to destroy_user_session_path, method: :delete,class:'nav-link text-light' do %>
+   ログアウト
+   <% end %>
+   </li>
+   </ul>
+   </div>
+   </nav>
+  </header>
     <%= yield %>
   </body>
 </html>
