@@ -1,15 +1,14 @@
 <h1>商品新規登録</h1>
-<!--中央揃え-->
 <%= form_with model: Item.new , url: admin_items_path, method: :post do |f| %>
 <p>商品画像</p>
-<!--選択されているかを右に表示する-->
+<%= f.file_field :image, accept: "image/*" %>
 <div class="form-group">
   <%= f.label :name, '商品名' %>
-  <%= f.text_field :name, class: 'form-gontrol' %>
+  <%= f.text_field :name, class: 'form-gontrol' placeholder: "商品名" %>
 </div>
 <div class="form-group">
   <%= f.label :introduction, '商品説明' %>
-  <%= f.text_field :introduction, class: 'form-gontrol' %>
+  <%= f.text_field :introduction, class: 'form-gontrol' placeholder: "ここに説明文を記述します"  %>
 </div>
 <div class="form-group">
   <%= f.label :genre_id, 'ジャンル' %>
@@ -17,7 +16,7 @@
 </div>
 <div class="form-group">
   <%= f.label :price, '税抜価格' %>
-  <%= f.number_field :price, class: 'form-control' %>
+  <%= f.number_field :price, class: 'form-control'  placeholder: "1000" %>
 </div>
 <div class="form-group">
   <%= f.submit '新規登録', class: 'btn btn-success' %>

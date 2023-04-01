@@ -1,8 +1,7 @@
 <h1>商品詳細</h1>
-<!--左に画像、右に編集内容を表示-->
-<p>商品名</p>
-<p>商品説明</p>
-<p>ジャンル</p>
-<p>税込価格（税抜価格）</p>
-<p>販売ステータス</p>
-<!--編集するボタン緑-->
+<%= image_tag @item.get_image %>
+<p>商品名<%= @item.item_name %></p>
+<p>商品説明<%= @item.item_introduction %></p>
+<p>ジャンル<%= @genre.genre_name %></p>
+<p>税込価格（税抜価格）<%= @item.item_price %></p>
+<p>販売ステータス<%= @item.item_is_active %></p>
