@@ -6,12 +6,31 @@ devise_for :customers,skip: [:passwords],controllers: {
 }
 
 root to: "homes#top"
+get '/home/about' => 'homes#about', as:'about'
+
+  namespace :customers do
+    resources :customers, only:[:show,:edit,:update,:unsubscribe,:withdraw]
+  end
+  namespace :customers do
+    resources :cart_items, only:[:index,:update,:destroy,:destroy_all,:create]
+  end
+  namespace :customers do
+    resources :orders, only:[:new,:show,:index]
+  end
+   namespace :customers do
+    resources :addresses, only:[:index,:edit,:create,:update,:destroy]
+  end
+   namespace :customers do
+    resources :items, only:[:show,:index]
+  end
+
 
 # 管理者用
 devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
 }
 
+get '/admin' => 'homes#top'
  namespace :admin do
     resources :order_details, only:[:update]
   end
