@@ -1,5 +1,5 @@
 <h1>商品詳細</h1>
-<%= image_tag @item.get_image %>
+<%= image_tag @item.get_item_image(100,100) %>
 <p>商品名<%= @item.item_name %></p>
 <p>商品説明<%= @item.item_introduction %></p>
 <p>ジャンル<%= @genre.genre_name %></p>
