@@ -7,7 +7,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label : %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -19,9 +19,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 <p>会員登録がお済みでない方</p>
-<%= link_to "こちら", new_customer_session_path %>から新規登録を行なってください。
-<%= render "public/shared/links" %>
+<%= link_to "こちら", new_customer_registration_path %>から新規登録を行なってください。
