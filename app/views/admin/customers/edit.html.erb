@@ -1,5 +1,19 @@
 <h1>○○さんの会員情報編集</h1>
-<!--○の部分に表示する人の名前を表示:id,user-->
+<%= form_with model: @customer do |f| %>
+
+<div class="form-group">
+  <%= f.label :id, '会員ID' %>
+  <%= customer.id %>
+</div>
+<div class="form-group">
+  <%= f.text_field :last_name, class: 'form-control' %>
+  <%= f.text_field :first_name, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :last_name_kana :first_name_kana, 'フリガナ' %>
+  <%= f.text_field :last_name_kana, class: 'form-control' %>
+  <%= f.text_field :first_name_kana, class: 'form-control' %>
+</div>
 <p>会員ID</p>
 <p>氏名</p>
 <p>フリガナ</p>

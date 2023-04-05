@@ -2,35 +2,35 @@
 <%= form_with model: Item.new , url: admin_items_path, method: :post do |f| %>
 <div>
  <%= f.label :item_image, '商品画像' %>
- <%= f.file_field :item_image, accept: "image/*", class:'form-control-file' %>
+ <%= f.file_field :item_image, accept: "image/*", class: 'form-control-file' %>
 </div>
 <div class="form-group">
   <%= f.label :name, '商品名' %>
-  <%= f.text_field :name, class: 'form-gontrol' placeholder: "商品名" %>
+  <%= f.text_field :name, class: 'form-gontrol', placeholder: "商品名" %>
 </div>
 <div class="form-group">
   <%= f.label :introduction, '商品説明' %>
-  <%= f.text_field :introduction, class: 'form-gontrol' placeholder: "ここに説明文を記述します"  %>
+  <%= f.text_field :introduction, class: 'form-gontrol', placeholder: "ここに説明文を記述します"  %>
 </div>
 <div class="form-group">
   <%= f.label :genre_id, 'ジャンル' %>
-  <%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "--選択してください--" }  %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "--選択してください--" }  %>
 </div>
 <div class="form-group">
   <%= f.label :price, '税抜価格' %>
-  <%= f.number_field :price, class: 'form-control'  placeholder: "1000" %>
+  <%= f.number_field :price, class: 'form-control', placeholder: "1000" %>
 </div>
+<div>
+<p>販売ステータス</p>
+ <%= f.radio_button :is_active, true %>
+ <%= f.label :is_active, '販売中' %>
+ <%= f.radio_button :is_active, true %>
+ <%= f.label :is_active, '販売停止中' %>
+</div>
+
 <div class="form-group">
   <%= f.submit '新規登録', class: 'btn btn-success' %>
 </div>
 <% end %>
-<div>
-<%= form_with(model: user) do |form| %>
-<div class="form_control">
-<%= form.label :is_active, class: 'form_item_label' %>
-<% Item.all.each do |item| %>
-<label><%= form.radio_button(:is_active, item.id) %><%= active.name %></label>
-<% end %>
-</div>
-</div>
+
 
