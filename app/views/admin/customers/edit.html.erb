@@ -14,13 +14,27 @@
   <%= f.text_field :last_name_kana, class: 'form-control' %>
   <%= f.text_field :first_name_kana, class: 'form-control' %>
 </div>
-<p>会員ID</p>
-<p>氏名</p>
-<p>フリガナ</p>
-<p>郵便番号</p>
-<p>住所</p>
-<p>電話番号</p>
-<p>メールアドレス</p>
-<p>会員ステータス</p>
+<div class="form-group">
+  <%= f.label :postal_code, '郵便番号' %>
+  <%= f.text_field :postal_code, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :address, class: 'form-control' %>
+  <%= f.text_field :address, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :telephone_number, '電話番号' %>
+  <%= f.telephone_field :telephone_number, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :email, 'メールアドレス' %>
+  <%= f.email_field :email, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :is_deleted, '会員ステータス' %>
 
-<!--変更を保存ボタン*緑を追加-->
+</div>
+<div class="form-group" >
+  <%= f.submit '変更を保存', class: 'btn btn-success' %>
+</div>
+<% end %>
