@@ -23,7 +23,7 @@ root to: "homes#top"
     resources :items, only:[:show,:index]
   end
 
-get '/home/about' => 'homes#about', as:'about'
+get '/home/about' => 'homes#about', as: 'about'
 # 管理者用
 devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"

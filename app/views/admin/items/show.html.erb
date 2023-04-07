@@ -1,7 +1,7 @@
 <h1>商品詳細</h1>
-<%= image_tag @item.get_item_image(100,100) %>
-<p>商品名<%= @item.item_name %></p>
-<p>商品説明<%= @item.item_introduction %></p>
-<p>ジャンル<%= @genre.genre_name %></p>
-<p>税込価格（税抜価格）<%= @item.item_price %></p>
-<p>販売ステータス<%= @item.item_is_active %></p>
+<!--</%= image_tag @item.get_item_image(100,100) %>-->
+<p>商品名<%= @item.name %></p>
+<p>商品説明<%= @item.introduction %></p>
+<p>ジャンル<%= @item.genre.name %></p>
+<p>税込価格（税抜価格）<%= @item.price %></p>
+<p>販売ステータス<%= @item.is_active %></p>

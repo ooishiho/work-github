@@ -19,20 +19,20 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
-    @newitem = Item.new
+    @genres = Genre.all
     @item = Item.find(params[:id])
   end
 
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to item_path(@item.id)
+    redirect_to admin_item_path(@item.id)
   end
 
   private
 
   def item_params
-    params.require(:item).permit( :name, :introduction, :genre_id, :price, :is_active)
+    params.require(:item).permit(:item_image, :name, :introduction, :genre_id, :price, :is_active)
   end
 
 end

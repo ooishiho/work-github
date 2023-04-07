@@ -1,5 +1,6 @@
 <h1>商品一覧</h1>
 <!--+ボタンで商品の新規登録-->
+<%= link_to "+" , new_admin_item_path %>
 <table>
  <thead>
     <tr>
@@ -11,10 +12,10 @@
     </tr>
  </thead>
  <tbody>
-<%= @items.each do |item| %>
+<% @items.each do |item| %>
   <tr>
     <td><%= item.id %></td>
-    <td><%= item.name %></td>
+    <td><%= link_to item.name, edit_admin_item_path(item.id) %></td>
     <td><%= item.price %></td>
     <td></td>
     <td><%= item.is_active %></td>
