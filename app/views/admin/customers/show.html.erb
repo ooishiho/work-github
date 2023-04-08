@@ -9,5 +9,5 @@
 <p>メールアドレス<%= @customer.email %></p>
 <p>会員ステータス<%= @customer.is_deleted %></p>
 
-<!--編集するボタン*緑と、注文履歴一覧を見る＊青ボタンを追加-->
-<%= link_to "編集する",admin_customer_path(@customer), class: "btn btn-sm btn-success edit_customer_path(@customer" %>
+<%= link_to "編集する",edit_admin_customer_path(customer.id), class: "btn btn-sm btn-success edit_admin_customer_path(customer.id)" %>
+<%= link_to "注文履歴一覧を見る",admin_path, class: "btn btn-sm btn-success admin_path" %>
