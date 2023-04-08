@@ -5,31 +5,31 @@ devise_for :customers,skip: [:passwords],controllers: {
   sessions: 'public/sessions'
 }
 
-root to: "homes#top"
+root to: "public/homes#top"
 
-  namespace :customers do
+  namespace :public do
     resources :customers, only:[:show,:edit,:update,:unsubscribe,:withdraw]
   end
-  namespace :customers do
+  namespace :public do
     resources :cart_items, only:[:index,:update,:destroy,:destroy_all,:create]
   end
-  namespace :customers do
+  namespace :public do
     resources :orders, only:[:new,:show,:index]
   end
-   namespace :customers do
+   namespace :public do
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
   end
-   namespace :customers do
+   namespace :public do
     resources :items, only:[:show,:index]
   end
 
-get '/home/about' => 'homes#about', as: 'about'
+get '/home/about' => 'public/homes#about', as: 'about'
 # 管理者用
 devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
 }
 
-get '/admin' => 'homes#top'
+get '/admin' => 'admin/homes#top'
  namespace :admin do
     resources :order_details, only:[:update]
   end
