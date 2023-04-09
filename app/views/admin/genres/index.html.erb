@@ -3,7 +3,7 @@
 <%= form_with model: Genre.new , url: admin_genres_path, method: :post do |f| %>
    <div class="form-group">
     <%= f.label :name, 'ジャンル名' %>
-    <%= f.string_field :name, class: 'form-control', placeholder: "ジャンル名" %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
    </div>
    <div class="form-group">
      <%= f.submit '新規登録', class: 'btn btn-success' %>
