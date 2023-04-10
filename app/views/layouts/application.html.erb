@@ -17,7 +17,7 @@
    <ul class="navbar-nav">
    <% if customer_signed_in? %>
    <li>
-   <%= link_to public_customer_path(@customer.id), class:'nav-link text-light' do %>
+   <%= link_to public_customer_path(current_customer.id), class:'nav-link text-light' do %>
    マイページ
    <% end %>
    </li>
