@@ -1,0 +1,37 @@
+<1h>ショッピングカート</1h>
+<dev>
+  <%= link_to "カートを空にする", cart_items, method: :delete ,data: {confirm: "本当によろしいですか？"}, class: "btn btn-sm btn-danger destroy_cart_items_path" %>
+</dev>
+<table>
+ <thead>
+  <tr>
+   <th>商品名</th>
+   <th>単価（税込）</th>
+   <th>数量</th>
+   <th>小計</th>
+   <th></th>
+  </tr>
+ </thead>
+ <tbody>
+ <%= form_with model: CartItem.new , url: new_public_order_path, do |f| %>
+ <% @cart_items.each do |cart_item| %>
+  <tr>
+   <td><%= image_tag @item.get_item_image(20,20) %><%= item.name %></td>
+   <td><%= (cart_item.item.with_tax_price %></td>
+   <td><%= cart_item.amount %></td>
+   <td><%= (cart_item.subtotal %></td>
+   <td><%= link_to "削除", cart_item_path(@cart_item), method: :delete ,data: {confirm: "削除しますか？"}, class:"btn btn-sm btn-danger destroy_cart_item_path" %></td>
+  </tr>
+  <% end %>
+ </tbody>
+</table>
+
+<div>
+</div>
+
+<P>合計金額<% @cart_items +=  cart_item.subtotal %></P>
+
+<div class="form-group">
+  <%= f.submit '情報入力に進む', class: 'btn btn-success' %>
+</div>
+<% end %>

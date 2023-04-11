@@ -2,5 +2,5 @@
 <% @items.each do |item| %>
 <%= image_tag @item.get_item_image(100,100) %>
 <p><%= item.name %></p>
-<p>¥<%= item.price * 1.10 %></p>
+<p>¥<%= (item.price * 1.1).floor %></p>
 <% end %>
