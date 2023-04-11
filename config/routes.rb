@@ -5,6 +5,10 @@ devise_for :customers,skip: [:passwords],controllers: {
   sessions: 'public/sessions'
 }
 
+devise_for :admin,skip: [:registrations, :passwords] , controllers: {
+  sessions: "admin/sessions"
+}
+
 root to: "public/homes#top"
 
   namespace :public do
@@ -25,9 +29,7 @@ root to: "public/homes#top"
 
 get '/home/about' => 'public/homes#about', as: 'about'
 # 管理者用
-devise_for :admin,skip: [:registrations, :passwords] , controllers: {
-  sessions: "admin/sessions"
-}
+
 
 get '/admin' => 'admin/homes#top'
  namespace :admin do
