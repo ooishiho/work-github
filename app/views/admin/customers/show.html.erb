@@ -7,7 +7,13 @@
 <p>住所<%= @customer.address %></p>
 <p>電話番号<%= @customer.telephon_nunber %></p>
 <p>メールアドレス<%= @customer.email %></p>
-<p>会員ステータス<%= @customer.is_deleted %></p>
+<p>会員ステータス
+<% if @customer.is_deleted == true %>
+有効
+<% else %>
+退会
+<% end %>
+</p>
 
 <%= link_to "編集する",edit_admin_customer_path(customer.id), class: "btn btn-sm btn-success edit_admin_customer_path(customer.id)" %>
 <%= link_to "注文履歴一覧を見る",admin_path, class: "btn btn-sm btn-success admin_path" %>
