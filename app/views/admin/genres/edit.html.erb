@@ -2,7 +2,7 @@
 <%= form_with model: @genre, url: admin_genres_path, method: :patch do |f| %>
 <div class="form-group">
  <%= f.label :name, 'ジャンル名' %>
- <%= f.string_field :name, class: 'form-gontrol' %>
+ <%= f.text_field :name, class: 'form-gontrol' %>
 </div>
 <div clsss="form-group">
  <%= f.submit '変更を保存' , class: 'btn btn-success' %>

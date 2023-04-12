@@ -2,6 +2,9 @@ class Public::CartItemsController < ApplicationController
 
   def index
   @cart_items = CartItem.all
+  @cart_items.each do |cart_item|
+    
+  end
   end
 
   def create
@@ -9,6 +12,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destory
+  end
+
+  def destroy_all
+  CartItem.destroy_all
+  redirect_to public_cart_items_path
   end
 
   private

@@ -1,7 +1,7 @@
-<1h>ショッピングカート</1h>
-<dev>
-  <%= link_to "カートを空にする", cart_items, method: :delete ,data: {confirm: "本当によろしいですか？"}, class: "btn btn-sm btn-danger destroy_cart_items_path" %>
-</dev>
+<h1>ショッピングカート</h1>
+<div>
+  <%= link_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete ,data: {confirm: "本当によろしいですか？"}, class: "btn btn-sm btn-danger destroy_all_cart_items_path" %>
+</div>
 <table>
  <thead>
   <tr>
@@ -13,25 +13,21 @@
   </tr>
  </thead>
  <tbody>
- <%= form_with model: CartItem.new , url: new_public_order_path, do |f| %>
- <% @cart_items.each do |cart_item| %>
+  <% @cart_items.each do |cart_item| %>
   <tr>
+   <%= form_with model: CartItem.new , url: new_public_order_path  do |f| %>
    <td><%= image_tag @item.get_item_image(20,20) %><%= item.name %></td>
-   <td><%= (cart_item.item.with_tax_price %></td>
+   <td><%= cart_item.item.with_tax_price %></td>
    <td><%= cart_item.amount %></td>
-   <td><%= (cart_item.subtotal %></td>
-   <td><%= link_to "削除", cart_item_path(@cart_item), method: :delete ,data: {confirm: "削除しますか？"}, class:"btn btn-sm btn-danger destroy_cart_item_path" %></td>
-  </tr>
+   <td><%= cart_item.subtotal %></td>
+   <td><%= link_to "削除", cart_item_path(@cart_item), method: :delete ,data: {confirm: "削除しますか？"}, class: "btn btn-sm btn-danger destroy_cart_item_path" %></td>
+   <% @total +=  cart_item.subtotal %>
   <% end %>
+  </tr>
+ <% end %>
  </tbody>
 </table>
-
-<div>
-</div>
-
-<P>合計金額<% @cart_items +=  cart_item.subtotal %></P>
-
+<p>合計金額 <%= @total %></p>
 <div class="form-group">
-  <%= f.submit '情報入力に進む', class: 'btn btn-success' %>
+  <%= link_to '情報入力に進む',  new_public_order_path %>
 </div>
-<% end %>
