@@ -12,14 +12,18 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
 root to: "public/homes#top"
 
   namespace :public do
-    resources :customers, only:[:show,:edit,:update,:unsubscribe,:withdraw]
+    resources :customers, only:[:show,:edit,:update]
+  get '/customers/unsubscribe' => 'public/customers#unsubscribe'
+  put '/customers/withdraw' => 'public/customers#withdraw'
   end
   namespace :public do
     resources :cart_items, only:[:index,:update,:destroy,:create]
  delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   end
   namespace :public do
-    resources :orders, only:[:new,:show,:index]
+    resources :orders, only:[:new,:show,:index,:create]
+  get '/orders/confirm' => 'public/order#confirm'
+  get '/orders/complete' => 'public/orders#complete'
   end
    namespace :public do
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
