@@ -12,7 +12,10 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
 root to: "public/homes#top"
 
   namespace :public do
-    resources :customers, only:[:show,:edit,:update]
+    # resources :customers, only:[:show,:edit,:update]
+  get '/customers/my_page' => 'public_customers#show'
+  post '/customers/information/edit' => 'public_customers#edit'
+  patch '/customers/information' => 'public_customers#update'
   get '/customers/unsubscribe' => 'public/customers#unsubscribe'
   put '/customers/withdraw' => 'public/customers#withdraw'
   end

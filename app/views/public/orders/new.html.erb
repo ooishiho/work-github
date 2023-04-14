@@ -1,0 +1,15 @@
+<%= form_with model: %>
+<p>注文情報入力</p>
+<p>支払方法</p>
+<div class="form-group">
+  支払方法
+  <%= f.radio_button :achieve_status,Announcement.payment_method.key(0) %>
+  <%= f.label :achieve_status,Announcement.payment_method_i18n[:credit_card], value: Order.payment_method.key(0) %>
+  <%= f.radio_button :achieve_status,Announcement.payment_method.key(1) %>
+  <%= f.label :payment_method, false %>
+  <%= f.label :achieve_status,Announcement.payment_method_i18n[:transfer], value: Order.payment_method.key(1) %>
+</div>
+<p>お届け先</p>
+<div class="form-group">
+  <%= f.label
+</div>
