@@ -13,11 +13,11 @@ root to: "public/homes#top"
 
   namespace :public do
     # resources :customers, only:[:show,:edit,:update]
-  get '/customers/my_page' => 'public_customers#show'
-  post '/customers/information/edit' => 'public_customers#edit'
-  patch '/customers/information' => 'public_customers#update'
-  get '/customers/unsubscribe' => 'public/customers#unsubscribe'
-  put '/customers/withdraw' => 'public/customers#withdraw'
+  get '/customers/my_page' => 'customers#show'
+  post '/customers/information/edit' => 'customers#edit'
+  patch '/customers/information' => 'customers#update'
+  get '/customers/unsubscribe' => 'customers#unsubscribe'
+  put '/customers/withdraw' => 'customers#withdraw'
   end
   namespace :public do
     resources :cart_items, only:[:index,:update,:destroy,:create]

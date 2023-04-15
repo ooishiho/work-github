@@ -3,13 +3,13 @@
 <p>支払方法</p>
 <div class="form-group">
   支払方法
-  <%= f.radio_button :achieve_status,Announcement.payment_method.key(0) %>
-  <%= f.label :achieve_status,Announcement.payment_method_i18n[:credit_card], value: Order.payment_method.key(0) %>
-  <%= f.radio_button :achieve_status,Announcement.payment_method.key(1) %>
-  <%= f.label :payment_method, false %>
-  <%= f.label :achieve_status,Announcement.payment_method_i18n[:transfer], value: Order.payment_method.key(1) %>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 </div>
 <p>お届け先</p>
 <div class="form-group">
-  <%= f.label
+  <%= f.label %>
 </div>

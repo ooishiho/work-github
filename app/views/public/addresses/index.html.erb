@@ -1,5 +1,5 @@
 <h1>配送先登録/一覧</h1>
-<%= form_with model:Addresses.new , url: public_addresses_path, method: :post do |f| %>
+<%= form_with model:Address.new , url: public_addresses_path, method: :post do |f| %>
 <div>
  <%= f.label :postal_code, '郵便番号（ハイフンなし）' %>
  <%= f.text_field :postal_code, class: 'form-control-file', placeholder: "0000000" %>
@@ -26,7 +26,7 @@
   </tr>
  </thead>
  <tbody>
-<% @addresses.each do |addresses| %>
+<% @addresses.each do |address| %>
   <tr>
    <td><%= address.postal_code %></td>
    <td><%= address.address %></td>
