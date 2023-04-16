@@ -1,5 +1,5 @@
-<%= form_with model: %>
 <p>注文情報入力</p>
+<&= form_with
 <p>支払方法</p>
 <div class="form-group">
   支払方法
@@ -11,5 +11,5 @@
 </div>
 <p>お届け先</p>
 <div class="form-group">
-  <%= f.label %>
+  <%= f.select :address_id, options_from_collection_for_select(Address.all, :id,:address_display) %>
 </div>

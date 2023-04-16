@@ -1,37 +1,33 @@
 Rails.application.routes.draw do
 # 顧客用
-devise_for :customers,skip: [:passwords],controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+  devise_for :customers,skip: [:passwords],controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
+  devise_for :admin,skip: [:registrations, :passwords] , controllers: {
+    sessions: "admin/sessions"
+  }
 
-devise_for :admin,skip: [:registrations, :passwords] , controllers: {
-  sessions: "admin/sessions"
-}
-
-root to: "public/homes#top"
+  root to: "public/homes#top"
 
   namespace :public do
     # resources :customers, only:[:show,:edit,:update]
-  get '/customers/my_page' => 'customers#show'
-  post '/customers/information/edit' => 'customers#edit'
-  patch '/customers/information' => 'customers#update'
-  get '/customers/unsubscribe' => 'customers#unsubscribe'
-  put '/customers/withdraw' => 'customers#withdraw'
-  end
-  namespace :public do
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    put '/customers/withdraw' => 'customers#withdraw'
+  
     resources :cart_items, only:[:index,:update,:destroy,:create]
- delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-  end
-  namespace :public do
-    resources :orders, only:[:new,:show,:index,:create]
-  get '/orders/confirm' => 'public/order#confirm'
-  get '/orders/complete' => 'public/orders#complete'
-  end
-   namespace :public do
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+  
+      resources :orders, only:[:new,:show,:index,:create]
+    get '/orders/confirm' => 'public/order#confirm'
+    get '/orders/complete' => 'public/orders#complete'
+  
+
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
-  end
-   namespace :public do
     resources :items, only:[:show,:index]
   end
 
