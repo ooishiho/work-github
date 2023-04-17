@@ -1,6 +1,5 @@
 <p>注文情報入力</p>
-<&= form_with
-<p>支払方法</p>
+<%= form_with model: Order.new , url: public_orders_path, method: :post do |f| %>
 <div class="form-group">
   支払方法
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -11,5 +10,26 @@
 </div>
 <p>お届け先</p>
 <div class="form-group">
+  <%= f.radio_button :select_address, 1 %>
+  ご自身の住所
+  <%= current_customer.address %>
+</div>
+<div class="form-group">
+  <%= f.radio_button :select_address, 2 %>
+  登録済住所から注文
   <%= f.select :address_id, options_from_collection_for_select(Address.all, :id,:address_display) %>
 </div>
+<div class="form-group">
+  <%= f.radio_button :select_address, 3 %>
+  新しいお届け先
+  <%= f.label :postal_code , '郵便番号（ハイフンなし）' %>
+  <%= f.text_field :postal_code, placeholder: "0000000" %>
+  <%= f.label :address , '住所' %>
+  <%= f.text_field :address , placeholder: "東京都渋谷区代々木神園町0-0" %>
+  <%= f.label :name , '宛名' %>
+  <%= f.text_field :name, placeholder: "令和道子" %>
+</div>
+<div class="form-group">
+  <%= f.submit '確認画面へ進む', class: 'btn btn-success' %>
+</div>
+<% end %>

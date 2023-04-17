@@ -14,17 +14,14 @@ class Public::CartItemsController < ApplicationController
       # binding.pry
   end
 
-  def destory
-    puts 'test'
+  def destroy
     @cart_item = CartItem.find(params[:id])
-    @cart_item.destory
-    puts "test"
+    @cart_item.destroy
     redirect_to public_cart_items_path
   end
 
   def destroy_all
   CartItem.destroy_all
-  @cart_items.destory_all
   redirect_to public_cart_items_path
   end
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_for :admin,skip: [:registrations, :passwords] , controllers: {
     sessions: "admin/sessions"
   }
@@ -18,14 +18,14 @@ Rails.application.routes.draw do
     patch '/customers/information' => 'customers#update'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     put '/customers/withdraw' => 'customers#withdraw'
-  
+
     resources :cart_items, only:[:index,:update,:destroy,:create]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-  
+
       resources :orders, only:[:new,:show,:index,:create]
-    get '/orders/confirm' => 'public/order#confirm'
-    get '/orders/complete' => 'public/orders#complete'
-  
+    get '/orders/confirm' => 'order#confirm'
+    get '/orders/complete' => 'orders#complete'
+
 
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
     resources :items, only:[:show,:index]
