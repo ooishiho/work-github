@@ -37,10 +37,10 @@
 
 
 お届け先
-<% if order.payment_method == "1" %>
+<% if @order.payment_method == "1" %>
 <%= @order.name %>
 <%= @order.address %>
-<% elsif order.payment_method == "2" %>
+<% elsif @order.payment_method == "2" %>
 <%= @order.name %>
 <%= @order.address %>
 <% else %>

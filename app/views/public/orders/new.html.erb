@@ -1,5 +1,5 @@
 <p>注文情報入力</p>
-<%= form_with model: Order.new , url: public_orders_path, method: :post do |f| %>
+<%= form_with model: Order.new , url: public_orders_confirm_path, method: :post do |f| %>
 <div class="form-group">
   支払方法
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
