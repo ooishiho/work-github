@@ -17,7 +17,10 @@ class Public::AddressesController < ApplicationController
   redirect_to public_address_path
   end
 
-  def destory
+  def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to public_address_path
   end
 
   private
