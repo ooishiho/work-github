@@ -38,19 +38,14 @@ get '/home/about' => 'public/homes#about', as: 'about'
 get '/admin' => 'admin/homes#top'
  namespace :admin do
     resources :order_details, only:[:update]
-  end
-  namespace :admin do
-    resources :orders, only:[:show,:update]
-  end
-  namespace :admin do
-    resources :customers, only:[:index,:show,:edit,:update]
-  end
-  namespace :admin do
-    resources :genres, only:[:index,:create,:edit,:update]
-  end
-  namespace :admin do
-    resources :items, only:[:new,:index,:create,:show,:edit,:update]
-  end
 
+    resources :orders, only:[:show,:update]
+
+    resources :customers, only:[:index,:show,:edit,:update]
+
+    resources :genres, only:[:index,:create,:edit,:update]
+
+    resources :items, only:[:new,:index,:create,:show,:edit,:update]
+end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
