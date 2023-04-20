@@ -9,12 +9,14 @@
   </tr>
  </thead>
  <tbody>
+<% @cart_items.each do |cart_item| %>
   <tr>
-   <td></td>
-   <td></td>
-   <td></td>
+   <td><%= cart_item.item.name %></td>
+   <td><%= cart_item.item.price %></td>
+   <td><%= cart_item.amount %></td>
    <td></td>
   </tr>
+<% end %>
  </tbody>
 </table>
 
@@ -34,19 +36,10 @@
 </table>
 
 支払方法
-
+<%= @order.payment_method_i18n %>
 
 お届け先
-<% if @order.payment_method == "1" %>
 <%= @order.name %>
+<%= @order.postal_code %>
 <%= @order.address %>
-<% elsif @order.payment_method == "2" %>
-<%= @order.name %>
-<%= @order.address %>
-<% else %>
-<%= @address.name %>
-<%= @address.postal_code %>
-<%= @address.address %>
-<% end %>
-
- <%= link_to '注文を確定する', public_odrders_complete_path, class: 'btn btn-success' %>
+ <!--</%= link_to '注文を確定する', public_odrders_complete_path, class: 'btn btn-success' %>-->

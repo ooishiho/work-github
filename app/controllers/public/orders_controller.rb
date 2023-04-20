@@ -23,22 +23,25 @@ class Public::OrdersController < ApplicationController
  end
 
  def confirm
-  params[:order][:select_address]
+  @address = current_customer
+  @cart_items = current_customer.cart_items
+#   params[:order][:select_address]
   @order = Order.new(order_params)
-  @order.postal_code = current_customer.postal_code
-  @order.address = current_customer.address
-  @order.name = current_customer.first_name + current_customer.last_name
+  @order.payment_method = params[:order][:payment_method]
     if params[:order][:select_address] == "1"
      @order.name = current_customer.last_name
-     @order.name = current_customer.first_name
+     @order.postal_code = current_customer.postal_code
      @order.address = current_customer.address
     elsif params[:order][:select_address] == "2"
-    if Address.exists?(name: params[:order][:registered])
-      @order.name = Address.find(params[:order][:registered]).name
-      @order.address = Address.find(params[:order][:registered]).address
-    else
-      render :new
-    end
+     if Address.exists?(id: params[:order][:address_id])
+      @order.name = Address.find(params[:order][:address_id]).name
+      @order.postal_code = Address.find(params[:order][:address_id]).postal_code
+      @order.address = Address.find(params[:order][:address_id]).address
+     end
+    elsif params[:order][:select_address] == "3"
+     @order.name = current_customer.last_name
+     @order.postal_code = current_customer.postal_code
+     @order.address = current_customer.address
     end
  end
 
