@@ -19,8 +19,11 @@ class Public::CustomersController < ApplicationController
  end
 
  def withdraw
-  @customer.update()
-  redirect_to new_customer_session_path
+   @customer = current_customer.id
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to new_customer_session_path
  end
 
  private
