@@ -25,6 +25,7 @@
  <% end %>
  </tbody>
 </table>
+<%= link_to '買い物を続ける', public_items_path %>
 <p>合計金額 <%= @total %></p>
 <div class="form-group">
  <%= form_with model: CartItem.new , url: new_public_order_path  do |f| %>

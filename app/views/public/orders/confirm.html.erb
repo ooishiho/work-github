@@ -11,12 +11,14 @@
  <tbody>
 <% @cart_items.each do |cart_item| %>
   <tr>
-   <td><%= cart_item.item.name %></td>
+   <td><%= image_tag cart_item.item.get_item_image(20,20) %><%= cart_item.item.name %></td>
+   <td><%= cart_item.item.with_tax_price %></td>
    <td><%= cart_item.item.price %></td>
    <td><%= cart_item.amount %></td>
-   <td></td>
+   <td><%= cart_item.subtotal%></td>
+   <td><% @total +=  cart_item.subtotal %></td>
   </tr>
-<% end %>
+  <% end %>
  </tbody>
 </table>
 
@@ -27,10 +29,10 @@
  </tr>
  <tr>
   <th>商品合計</th>
-  <td></td>
+  <td>合計金額 <%= @total %></td>
  </tr>
  <tr>
-  <th請求金額></th>
+  <th>請求金額</th>
   <td></td>
  </tr>
 </table>
