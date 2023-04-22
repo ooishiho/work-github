@@ -25,8 +25,10 @@ class Public::OrdersController < ApplicationController
  def confirm
   @address = current_customer
   @cart_items = current_customer.cart_items
+
 #   params[:order][:select_address]
   @order = Order.new(order_params)
+  @order.shipping_cost = 800
   @order.payment_method = params[:order][:payment_method]
     if params[:order][:select_address] == "1"
      @order.name = current_customer.last_name
@@ -43,6 +45,7 @@ class Public::OrdersController < ApplicationController
      @order.postal_code = current_customer.postal_code
      @order.address = current_customer.address
     end
+   # byebug
  end
 
  private
