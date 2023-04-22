@@ -3,4 +3,4 @@
 </br>これまでの購入履歴が閲覧できなくなります。
 </br>退会する場合は、「退会する」をクリックしてください。</p>
 <%= link_to '退会しない', public_customers_my_page_path , class: 'btn-btn-primary' %>
-<%= link_to '退会する',  new_customer_session_path, method: :patch,  class: 'btn-btn-denger' %>
+<%= link_to '退会する', public_customers_withdraw_path, method: :patch,  data: {confirm: "本当に退会しますか？"},class: 'btn-btn-denger' %>

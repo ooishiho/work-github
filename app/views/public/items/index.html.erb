@@ -1,4 +1,4 @@
-<h1>商品一覧(全 件)</h1>
+<h1>商品一覧(全<%= @item_all.count %> 件)</h1>
 <% @items.each do |item| %>
 <%= link_to public_item_path(item.id)  do %>
 <%= image_tag item.get_item_image(100,100) %>

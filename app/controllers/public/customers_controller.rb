@@ -16,11 +16,11 @@ class Public::CustomersController < ApplicationController
 
 
  def unsubscribe
-  
+
  end
 
  def withdraw
-   @customer = current_customer.id
+   @customer = current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
     reset_session

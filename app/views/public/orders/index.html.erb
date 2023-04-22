@@ -13,14 +13,14 @@
  <tbody>
 <%= @order.each do |order| %><% curent_customer %>
   <tr>
-   <td></td>
+   <td><%= order.created_at %></td>
    <td><%= order.address %></td>
    <td><%= cart_item.item %></td>
-   <td><%= %></td>
+   <td></td>
    <td>
 
    </td>
-   <td></td>
+   <td><%= link_to '表示する', public_order_show(order.id) class: 'btn btn-cd success' %></td>
   </tr>
 <% end %>
  </tbody>
