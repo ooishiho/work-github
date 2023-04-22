@@ -11,16 +11,20 @@
   </tr>
  </thead>
  <tbody>
-<%= @order.each do |order| %><% curent_customer %>
+<% @orders.each do |order| %>
   <tr>
    <td><%= order.created_at %></td>
-   <td><%= order.address %></td>
-   <td><%= cart_item.item %></td>
-   <td></td>
+   <td>
+   <%= order.postal_code %></br>
+   <%= order.address %></br>
+   <%= order.name %>
+   </td>
+   <td><%= order.item.name %></td>
+   <td><%= order.total_payment %></td>
    <td>
 
    </td>
-   <td><%= link_to '表示する', public_order_show(order.id) class: 'btn btn-cd success' %></td>
+   <td><%= link_to '表示する', public_order_path(order.id), class: 'btn btn-cd success' %></td>
   </tr>
 <% end %>
  </tbody>

@@ -15,7 +15,23 @@ class Public::OrdersController < ApplicationController
 
  def create
    @order = Order.new(order_params)
+   @order.customer_id = current_customer.id
+
    @order.save
+   cart_items = current_customer.cart_items
+    cart_items.each do |cart_item|
+# 取り出したカートアイテムの数繰り返します
+# order_item にも一緒にデータを保存する必要があるのでここで保存します
+      order = OrderDetail.new
+      order.item_id = cart_item.item_id
+      order.price = cart_item.item.price
+      order.amount = cart_item.amount
+      order.order_id = @order.id
+# 購入が完了したらカート情報は削除するのでこちらに保存します
+# カート情報を削除するので item との紐付けが切れる前に保存します
+      order.save
+    end
+   cart_items.destroy_all
    redirect_to public_orders_complete_path
  end
 
@@ -51,6 +67,6 @@ class Public::OrdersController < ApplicationController
  private
 
  def order_params
-   params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+   params.require(:order).permit(:payment_method,:shipping_cost,:total_payment, :postal_code, :address, :name)
  end
 end
