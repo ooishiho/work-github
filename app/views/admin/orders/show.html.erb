@@ -1,13 +1,15 @@
 <h1>注文履歴詳細</h1>
 
-<p>購入者<%= link_to %></p>
+<p>購入者<%= link_to order.name, admin_customer_path(@customer.id) %></p>
 <p>注文日</p>
 <p>注文先</p>
 <p>支払方法</p>
 <p>注文ステータス
-<%= link_to '更新', admin_order_path method: :patch %>
+<%= form_with model:order , url: admin_order_path(order.id) do |f| %>
+<%= f.select :status, %> 
+<%= f.submit '更新', class: 'btn-btn-success' %>
+<% end %>
 </p>
-<!--更新ボタンの追加＊緑-->
 
 <table>
  <thead>
@@ -25,15 +27,16 @@
    <td><%= %></td>
    <td><%= %></td>
    <td><%= %></td>
-   <td><%= @order.making_status_i18n %></td>
+   <td>
+   <%= form_with model:order_details , url: admin_order_path(order.id) do |f| %>
+   <%= f.select :making_status, %>
+   <%= f.submit '変更', class: 'btn-btn-success' %>
+   </td>
   </tr>
  </tbody>
 </table>
 
-<!--変更ボタンを表示*緑-->
 
-
-<!--右下に請求金額の表示-->
-<p>商品合計</p>
-<p>送料</p>
-<p>請求金額合計</p>
+<p>商品合計<%= @order.total_payment %></p>
+<p>送料<%= @order.shipping_cost %></p>
+<p>請求金額合計<%= @order.total_payment %></p>

@@ -5,5 +5,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
+    
   end
 end

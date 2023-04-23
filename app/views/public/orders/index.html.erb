@@ -19,7 +19,11 @@
    <%= order.address %></br>
    <%= order.name %>
    </td>
-   <td><%= order.item.name %></td>
+   <td>
+    <% order.items.each do |item| %>
+    <p><%= item.name %></p>
+    <% end %>
+   </td>
    <td><%= order.total_payment %></td>
    <td>
 
