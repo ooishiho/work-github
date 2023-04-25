@@ -6,81 +6,81 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
   <header>
    <%= link_to 'ながのCake', root_path %>
-   <nav class="navbar">
+  <nav class="navbar">
    <div class="container">
-   <ul class="navbar-nav">
+    <ul class="navbar-nav">
    <% if customer_signed_in? %>
    <li>
-   <%= link_to public_customers_my_page_path, class:'nav-link text-light' do %>
+   <%= link_to public_customers_my_page_path, class:'nav-link ' do %>
    マイページ
    <% end %>
    </li>
    <li>
-   <%= link_to public_items_path, class:'nav-link text-light' do %>
+   <%= link_to public_items_path, class:'nav-link ' do %>
    商品一覧
    <% end %>
    </li>
    <li>
-   <%= link_to public_cart_items_path, class:'nav-link text-light' do %>
+   <%= link_to public_cart_items_path, class:'nav-link ' do %>
    カート
    <% end %>
    </li>
    <li>
-   <%= link_to destroy_customer_session_path, method: :delete,class:'nav-link text-light' do %>
+   <%= link_to destroy_customer_session_path, method: :delete,class:'nav-link ' do %>
    ログアウト
    <% end %>
    </li>
    <% elsif admin_signed_in? %>
    <li>
-   <%= link_to admin_items_path, class:'nav-link text-light' do %>
+   <%= link_to admin_items_path, class:'nav-link ' do %>
    商品一覧
    <% end %>
    </li>
    <li>
-   <%= link_to admin_customers_path, class:'nav-link text-light' do %>
+   <%= link_to admin_customers_path, class:'nav-link ' do %>
    会員一覧
    <% end %>
    </li>
    <li>
-   <%= link_to admin_path, class:'nav-link text-light' do %>
+   <%= link_to admin_path, class:'nav-link ' do %>
    注文履歴一覧
    <% end %>
    </li>
    <li>
-   <%= link_to admin_genres_path, class:'nav-link text-light' do %>
+   <%= link_to admin_genres_path, class:'nav-link ' do %>
    ジャンル一覧
    <% end %>
    </li>
    <li>
-   <%= link_to destroy_admin_session_path, method: :delete,class:'nav-link text-light' do %>
+   <%= link_to destroy_admin_session_path, method: :delete,class:'nav-link ' do %>
    ログアウト
    <% end %>
    </li>
    <% else %>
    <li>
-   <%= link_to about_path, class: 'nav-link text-light' do %>
+   <%= link_to about_path, class: 'nav-link ' do %>
    About
    <% end %>
    </li>
    <li>
-   <%= link_to public_items_path, class: 'nav-link text-light' do %>
+   <%= link_to public_items_path, class: 'nav-link ' do %>
    商品一覧
    <% end %>
    </li>
    <li>
-   <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
+   <%= link_to new_customer_registration_path, class: 'nav-link ' do %>
    新規登録
    <% end %>
    </li>
    <li>
-   <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
+   <%= link_to new_customer_session_path, class: 'nav-link ' do %>
    ログイン
    <% end %>
    </li>

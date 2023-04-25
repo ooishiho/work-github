@@ -8,7 +8,7 @@
 <p>電話番号<%= @customer.telephon_nunber %></p>
 <p>メールアドレス<%= @customer.email %></p>
 <p>会員ステータス
-<% if @customer.is_deleted == true %>
+<% if @customer.is_deleted == false %>
 有効
 <% else %>
 退会
