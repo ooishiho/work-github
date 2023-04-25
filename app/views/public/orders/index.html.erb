@@ -13,9 +13,9 @@
  <tbody>
 <% @orders.each do |order| %>
   <tr>
-   <td><%= order.created_at %></td>
+   <td><%= l order.created_at %></td>
    <td>
-   <%= order.postal_code %></br>
+   〒<%= order.postal_code %></br>
    <%= order.address %></br>
    <%= order.name %>
    </td>
@@ -24,10 +24,8 @@
     <p><%= item.name %></p>
     <% end %>
    </td>
-   <td><%= order.total_payment %></td>
-   <td>
-
-   </td>
+   <td><%= order.total_payment %>円</td>
+   <td><%= order.status_i18n %></td>
    <td><%= link_to '表示する', public_order_path(order.id), class: 'btn btn-cd success' %></td>
   </tr>
 <% end %>
