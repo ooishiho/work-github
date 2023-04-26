@@ -3,7 +3,18 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+ before_action :configure_permitted_parameters, if: :devise_controller?
+ before_action :test
+   
 
+  def after_sign_in_path_for(resource)
+    puts 'test2'
+    public_customers_my_page_path
+  end
+  
+  def test
+    puts 'test'
+  end
   # GET /resource/sign_up
   # def new
   #   super
@@ -59,4 +70,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  protected
+
+  def configure_permitted_parameters
+    #devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephon_nunber])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name,:last_name_kana,:first_name_kana,:email,:postal_code,:address,:telephon_nunber])
+  end
+
 end

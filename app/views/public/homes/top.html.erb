@@ -1,13 +1,23 @@
-<p>ジャンル検索</p>
 
-<p>ようこそ、ながのCAKEへ!</br>このサイトは、ケーキ販売のECサイトになります。
-</br>会員でない方も、商品の閲覧はできますが、</br>購入には会員登録が必要になります。</p>
+<div  class="container">
+  <div class="row">
+  <div class="px-3 mx-auto">
+  <h3>ようこそ、ながのCAKEへ!</br>このサイトは、ケーキ販売のECサイトになります。
+</br>会員でない方も、商品の閲覧はできますが、</br>購入には会員登録が必要になります。</h3>
+  </div>
+  </div>
+</div>
 
 <h2>新着商品</h2>
-<% @items.each do |item| %>
-<%= image_tag item.get_item_image(100,100) %>
-<p><%= item.name %></p>
-<p>¥<%= (item.price * 1.1).floor %></p>
-<% end %>
+<div class="row">
+ <% @items.each do |item| %>
+  <div class="col-md-3">
+    <%= image_tag item.get_item_image(100,100) %>
+    <p><%= item.name %></p>
+    <p>¥<%= (item.price * 1.1).floor %></p>
+  </div>
+ <% end %>
+</div>
+
 <%= paginate @items %>
 <%= link_to '全ての商品を見る>', public_items_path %>

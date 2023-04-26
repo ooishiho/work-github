@@ -1,12 +1,17 @@
 class Public::OrdersController < ApplicationController
 
  def new
-   @order = Order.new
-   @order.customer_id = current_customer
+   @cart_items = current_customer.cart_items
+   if @cart_items.exists?
+    @order = Order.new
+    @order.customer_id = current_customer
+   else
+    redirect_to public_cart_items_path
+   end
  end
 
  def index
-   @orders = Order.all
+   @orders = current_customer.orders
  end
 
  def show
