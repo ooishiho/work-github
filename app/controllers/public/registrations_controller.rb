@@ -5,13 +5,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
  before_action :configure_permitted_parameters, if: :devise_controller?
  before_action :test
-   
 
-  def after_sign_in_path_for(resource)
+
+  def after_sign_up_path_for(resource)
     puts 'test2'
     public_customers_my_page_path
   end
-  
+
   def test
     puts 'test'
   end
