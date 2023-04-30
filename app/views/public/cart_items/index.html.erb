@@ -1,14 +1,19 @@
-<h1>ショッピングカート</h1>
+<div class="container">
+ <div class="row">
+  <h1 class="col-lg-5">ショッピングカート</h1>
+ </div>
+</div>
+
 <div>
   <%= link_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete ,class: "btn btn-sm btn-danger public_cart_items_path" %>
 </div>
-<table>
+<table class="table">
  <thead>
   <tr>
-   <th>商品名</th>
-   <th>単価（税込）</th>
-   <th>数量</th>
-   <th>小計</th>
+   <th class="col-md-5">商品名</th>
+   <th class="col-md-2">単価（税込）</th>
+   <th class="col-md-2">数量</th>
+   <th class="col-md-1">小計</th>
    <th></th>
   </tr>
  </thead>
@@ -30,7 +35,7 @@
   <% end %>
  </tbody>
 </table>
-<%= link_to '買い物を続ける', public_items_path %>
+<%= link_to '買い物を続ける', root_path %>
 <p>合計金額 <%= @total %></p>
 <div class="form-group">
  <%= form_with model: CartItem.new , url: new_public_order_path  do |f| %>

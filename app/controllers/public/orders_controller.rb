@@ -29,7 +29,7 @@ class Public::OrdersController < ApplicationController
 # order_item にも一緒にデータを保存する必要があるのでここで保存します
       order = OrderDetail.new
       order.item_id = cart_item.item_id
-      order.price = cart_item.item.price
+      order.price = cart_item.item.with_tax_price
       order.amount = cart_item.amount
       order.order_id = @order.id
 # 購入が完了したらカート情報は削除するのでこちらに保存します

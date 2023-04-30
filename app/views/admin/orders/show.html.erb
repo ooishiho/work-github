@@ -3,11 +3,11 @@
 <p>購入者<%= link_to @order.name, admin_customer_path(@customer.id) %></p>
 <p>注文日<%= @order.created_at %></p>
 <p>注文先
-<%= @order.postal_code %></br>
+〒<%= @order.postal_code %></br>
 <%= @order.address %></br>
 <%= @order.name %>
 </p>
-<p>支払方法<%= @order.payment_method %></p>
+<p>支払方法<%= @order.payment_method_i18n %></p>
 <p>注文ステータス
 <%= form_with model:@order , url: admin_order_path(@order.id) do |f| %>
 <%= f.select :status,Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
