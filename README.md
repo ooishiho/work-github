@@ -1,24 +1,4 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+このソースコードはDMM WEBCAMPの応用フェーズ学習のECサイトコードになります。
+管理、顧客のdeviseを使用し、初めて設計からチャレンジした内容になります。
+本来はチーム開発する内容なので機能的に物足りない部分もあるかと思います。
